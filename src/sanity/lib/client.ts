@@ -8,7 +8,10 @@ export const client = createClient({
   useCdn: true, // Set to false if statically generating pages, ISR, or tag-based revalidation
 });
 
+// Define a type for the parameters object
+type QueryParams = Record<string, unknown>;
+
 // Reusable fetch function
-export async function sanityFetch({ query, params }: { query: string; params?: any }) {
+export async function sanityFetch({ query, params }: { query: string; params?: QueryParams }) {
   return await client.fetch(query, params);
 }
